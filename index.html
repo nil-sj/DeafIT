@@ -37,6 +37,21 @@
         .tagline {
             font-size: 90%;
         }
+
+        @media screen and (max-width: 768px) {
+            .completeSpeech {
+                display: hidden;
+            }
+            #resultTextTot {
+                display: hidden;
+            }
+            #resultSymbolTot {
+                display: hidden;
+            }
+            .completeSpeech-divider {
+                display: none;
+            }
+        }
     </style>
     <title>Speech to Symbol</title>
 </head>
@@ -51,8 +66,8 @@
     <p class="label">Current Speech:</p>
     <div id="resultText">&nbsp;</div>
     <div id="resultSymbol">&nbsp;</div>
-    <hr width="100%">
-    <p class="label">Complete Speech:</p>
+    <hr class="completeSpeech-divider" width="100%">
+    <p class="label completeSpeech">Complete Speech:</p>
     <div id="resultTextTot">&nbsp;</div>
     <div id="resultSymbolTot">&nbsp;</div>
     <script src="script.js"></script>
