@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .ASL-letter {
+            width: 20px;
+        }
+
+        .status {
+            font-style: italic;
+            font-size: 80%;
+        }
+
+        #resultText {
+            padding: 4px 6px;
+            border: 1px solid grey;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        #resultTextTot {
+            padding: 4px 6px;
+            border: 1px solid grey;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        .label {
+            font-size: 70%;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 90%;
+        }
+    </style>
+    <title>Speech to Symbol</title>
+</head>
+
+<body>
+    <h1>DeafIT</h1>
+    <p class="tagline">Empowering the deaf, with the power of IT, so anybody can defeat the communication-barrier!</p>
+    <button id="startRecording">Start Recording</button>
+    <button id="stopRecording" disabled>Stop Recording</button>
+    <p class="status">Status: <span id="instructions">Press the 'Start Recording' button.</span></p>
+    <hr width="100%">
+    <p class="label">Current Speech:</p>
+    <div id="resultText">&nbsp;</div>
+    <div id="resultSymbol">&nbsp;</div>
+    <hr width="100%">
+    <p class="label">Complete Speech:</p>
+    <div id="resultTextTot">&nbsp;</div>
+    <div id="resultSymbolTot">&nbsp;</div>
+    <script src="script.js"></script>
+</body>
+
+</html>
