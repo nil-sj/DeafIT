@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const textResultDiv = document.querySelector('#resultText');
     const totalTextResultDiv = document.querySelector('#resultTextTot');
+    const transResultDiv = document.querySelector('#resultTextTrans');
+    const totalTransResultDiv = document.querySelector('#resultTextTransTot');
     const symbolResultDiv = document.querySelector('#resultSymbol');
     const totalSymbolResultDiv = document.querySelector('#resultSymbolTot');
     const instructions = document.querySelector('#instructions');
@@ -62,7 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             textResultDiv.textContent = finalTranscript || interimTranscript;
-            symbolResultDiv.innerHTML = convertStringToASL(finalTranscript || interimTranscript);
+            let intText = convertStringToASL(finalTranscript || interimTranscript);
+            symbolResultDiv.innerHTML = intText;
+            let langInput = document.querySelector('#translatedLang').value;
+            let transText = '';
+
+            (async () => {
+                let res = await fetch(`https://665.uncovernet.workers.dev/translate?text={intText}&source_lang=en&target_lang={langInput}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+                });
+                transText = await res.json();
+                console.log(transText);
+                transResultDiv.innerHTML = transText;    
+            })();
+            
             totalTranscript += finalTranscript;
             totalSymbolScript += convertStringToASL(finalTranscript);
         };
