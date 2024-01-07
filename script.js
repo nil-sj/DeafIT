@@ -69,15 +69,45 @@ document.addEventListener('DOMContentLoaded', () => {
             let langInput = document.querySelector('#translatedLang').value;
             let transText = '';
 
-            (async () => {
-                let res = await fetch(`/cors-proxy/https://665.uncovernet.workers.dev/translate?text={intText}&source_lang=en&target_lang={langInput}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-                });
-                transText = await res.json();
-                console.log(transText);
-                transResultDiv.innerHTML = transText;    
-            })();
+            // (async () => {
+            //     let res = await fetch(`/cors-proxy/https://665.uncovernet.workers.dev/translate?text={intText}&source_lang=en&target_lang={langInput}`, {
+            //         method: 'POST',
+            //         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+            //     });
+            //     transText = await res.json();
+            //     console.log(transText);
+            //     transResultDiv.innerHTML = transText;    
+            // })();
+
+            const apiUrl = 'https://665.uncovernet.workers.dev/translate?text=hello&source_lang=en&target_lang=hi';
+            const data = {
+            // name: 'John Doe',
+            // email: 'johndoe@example.com',
+            };
+
+            const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            };
+
+            fetch(apiUrl, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                transResultDiv.textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                console.error
+
+            ('Error:', error);
+            });
             
             totalTranscript += finalTranscript;
             totalSymbolScript += convertStringToASL(finalTranscript);
