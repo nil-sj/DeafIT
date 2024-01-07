@@ -70,20 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let transText = '';
 
             let intTextEncoded = encodeURI(intText);
-            fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={langInput}&dt=t&q={intTextEncoded}`)
+            let api_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl="+langInput+"&dt=t&q="+intTextEncoded;
+            fetch(api_URL)
                 .then(res => res.json())
                 .then(data => transResultDiv.innerHTML = data[0][0][0]);
-            // (async () => {
-            //     let res = await fetch(`https://665.uncovernet.workers.dev/translate?text={intText}&source_lang=en&target_lang={langInput}`, {
-            //         method: 'GET',
-            //         headers: { 'Content-Type': 'application/json' }
-            //     });
-            //     transText = await res.json();
-            //     console.log(transText);
-            //     transResultDiv.innerHTML = transText;    
-            // })();
-
-            
             
             totalTranscript += finalTranscript;
             totalSymbolScript += convertStringToASL(finalTranscript);
