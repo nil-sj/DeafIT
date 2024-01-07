@@ -62,24 +62,29 @@
                 display: hidden;
                 color: white;
             }
+
             #resultTextTot {
                 display: hidden;
                 color: white;
                 border: none;
             }
+
             #resultTextTransTot {
                 display: hidden;
                 color: white;
                 border: none;
             }
+
             #resultSymbolTot {
                 display: hidden;
                 color: white;
                 border: none;
             }
+
             #resultSymbolTot .ASL-letter {
                 display: none;
             }
+
             .completeSpeech-divider {
                 display: none;
             }
@@ -90,19 +95,32 @@
 
 <body>
     <h1>DeafIT</h1>
-    <p class="tagline">Empowering the deaf, with the <a href="https://github.com/nil-sj/DeafIT" title="GitHub: View the source code" target="_blank" style="text-decoration: underline dotted blue;">power of IT</a>, so anybody can defeat the communication-barrier!</p>
+    <p class="tagline">Empowering the deaf, with the <a href="https://github.com/nil-sj/DeafIT"
+            title="GitHub: View the source code" target="_blank" style="text-decoration: underline dotted blue;">power
+            of IT</a>, so anybody can defeat the communication-barrier!</p>
     <button id="startRecording">Start Recording</button>
     <button id="stopRecording" disabled>Stop Recording</button>
     <div id="lang-translation-input">
         <label for="translatedLang">Choose translation language:</label>
         <select name="translatedLang" id="translatedLang">
-        <option value="en" disabled selected hidden>Select</option>
-        <option value="bn">Bengali</option>
-        <option value="hi">Hindi</option>
-        <option value="ur">Urdu</option>
+            <option value="en" disabled selected hidden>Select</option>
+            <option value="as">Assamese</option>
+            <option value="bn">Bengali</option>
+            <option value="gu">Gujarati</option>
+            <option value="hi">Hindi</option>
+            <option value="kn">Kannada</option>
+            <option value="ml">Malayalam</option>
+            <option value="mr">Marathi</option>
+            <option value="ne">Nepali</option>
+            <option value="or">Odia/Oriya</option>
+            <option value="pa">Punjabi</option>
+            <option value="sa">Sanskrit</option>
+            <option value="te">Telugu</option>
+            <option value="ur">Urdu</option>
         </select>
     </div>
-    <p class="status">Status: <span id="instructions">Press the 'Start Recording' button and speak in English.</span></p>
+    <p class="status">Status: <span id="instructions">Press the 'Start Recording' button and speak in English.</span>
+    </p>
     <hr width="100%">
     <p class="label">Current Speech:</p>
     <div id="resultText">&nbsp;</div>
