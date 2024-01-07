@@ -28,6 +28,20 @@
             margin-bottom: 8px;
         }
 
+        #resultTextTrans {
+            padding: 4px 6px;
+            border: 1px solid grey;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        #resultTextTransTot {
+            padding: 4px 6px;
+            border: 1px solid grey;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
         .label {
             font-size: 70%;
             font-weight: bold;
@@ -38,12 +52,22 @@
             font-size: 90%;
         }
 
+        #lang-translation-input {
+            margin-top: 1rem;
+            font-size: 90%;
+        }
+
         @media screen and (max-width: 768px) {
             .completeSpeech {
                 display: hidden;
                 color: white;
             }
             #resultTextTot {
+                display: hidden;
+                color: white;
+                border: none;
+            }
+            #resultTextTransTot {
                 display: hidden;
                 color: white;
                 border: none;
@@ -69,14 +93,25 @@
     <p class="tagline">Empowering the deaf, with the <a href="https://github.com/nil-sj/DeafIT" title="GitHub: View the source code" target="_blank" style="text-decoration: underline dotted blue;">power of IT</a>, so anybody can defeat the communication-barrier!</p>
     <button id="startRecording">Start Recording</button>
     <button id="stopRecording" disabled>Stop Recording</button>
-    <p class="status">Status: <span id="instructions">Press the 'Start Recording' button.</span></p>
+    <div id="lang-translation-input">
+        <label for="translatedLang">Choose translation language:</label>
+        <select name="translatedLang" id="translatedLang">
+        <option value="en" disabled selected hidden>Select</option>
+        <option value="bn">Bengali</option>
+        <option value="hi">Hindi</option>
+        <option value="ur">Urdu</option>
+        </select>
+    </div>
+    <p class="status">Status: <span id="instructions">Press the 'Start Recording' button and speak in English.</span></p>
     <hr width="100%">
     <p class="label">Current Speech:</p>
     <div id="resultText">&nbsp;</div>
+    <div id="resultTextTrans">&nbsp;</div>
     <div id="resultSymbol">&nbsp;</div>
     <hr class="completeSpeech-divider" width="100%">
     <p class="label completeSpeech">Complete Speech:</p>
     <div id="resultTextTot">&nbsp;</div>
+    <div id="resultTextTransTot">&nbsp;</div>
     <div id="resultSymbolTot">&nbsp;</div>
     <script src="script.js"></script>
 </body>
