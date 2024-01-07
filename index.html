@@ -53,7 +53,7 @@
         }
 
         #lang-translation-input {
-            margin-top: 1rem;
+            margin-bottom: 1rem;
             font-size: 90%;
         }
 
@@ -98,8 +98,6 @@
     <p class="tagline">Empowering the deaf, with the <a href="https://github.com/nil-sj/DeafIT"
             title="GitHub: View the source code" target="_blank" style="text-decoration: underline dotted blue;">power
             of IT</a>, so anybody can defeat the communication-barrier!</p>
-    <button id="startRecording">Start Recording</button>
-    <button id="stopRecording" disabled>Stop Recording</button>
     <div id="lang-translation-input">
         <label for="translatedLang">Choose translation language:</label>
         <select name="translatedLang" id="translatedLang">
@@ -119,6 +117,8 @@
             <option value="ur">Urdu</option>
         </select>
     </div>
+    <button id="startRecording">Start Recording</button>
+    <button id="stopRecording" disabled>Stop Recording</button>
     <p class="status">Status: <span id="instructions">Press the 'Start Recording' button and speak in English.</span>
     </p>
     <hr width="100%">
