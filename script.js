@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             (async () => {
                 let res = await fetch(`https://665.uncovernet.workers.dev/translate?text={intText}&source_lang=en&target_lang={langInput}`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+                    headers: { 'Content-Type': 'application/json' }
                 });
                 transText = await res.json();
                 console.log(transText);
