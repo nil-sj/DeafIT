@@ -69,15 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
             let langInput = document.querySelector('#translatedLang').value;
             let transText = '';
 
-            (async () => {
-                let res = await fetch(`https://665.uncovernet.workers.dev/translate?text={intText}&source_lang=en&target_lang={langInput}`, {
-                    method: 'GET',
-                    headers: { 'Content-Type': 'application/json' }
-                });
-                transText = await res.json();
-                console.log(transText);
-                transResultDiv.innerHTML = transText;    
-            })();
+            let intTextEncoded = encodeURI(intText);
+            fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={langInput}&dt=t&q={intTextEncoded}`)
+                .then(res => res.json())
+                .then(data => transResultDiv.innerHTML = data[0][0][0]);
+            // (async () => {
+            //     let res = await fetch(`https://665.uncovernet.workers.dev/translate?text={intText}&source_lang=en&target_lang={langInput}`, {
+            //         method: 'GET',
+            //         headers: { 'Content-Type': 'application/json' }
+            //     });
+            //     transText = await res.json();
+            //     console.log(transText);
+            //     transResultDiv.innerHTML = transText;    
+            // })();
 
             
             
