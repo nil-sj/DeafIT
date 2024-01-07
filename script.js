@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //     transResultDiv.innerHTML = transText;    
             // })();
 
-            const apiUrl = 'https://665.uncovernet.workers.dev/translate?text=hello&source_lang=en&target_lang=hi';
+            const apiUrl = '/cors-proxy/https://665.uncovernet.workers.dev/translate?text=hello&source_lang=en&target_lang=hi';
             const data = {
             // name: 'John Doe',
             // email: 'johndoe@example.com',
