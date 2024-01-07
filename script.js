@@ -17,6 +17,7 @@ function convertStringToASL(textString) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const startRecordingButton = document.querySelector('#startRecording');
     const stopRecordingButton = document.querySelector('#stopRecording');
 
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let totalTranscript;
         let totalSymbolScript;
+        let totalTranslatedScript;
 
         recognition.onstart = () => {
             stopRecordingButton.disabled = false;
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Speech recognition started');
             totalTranscript = '';
             totalSymbolScript = '';
+            totalTranslatedScript = '';
         };
 
         recognition.onresult = (event) => {
@@ -63,18 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            textResultDiv.textContent = finalTranscript || interimTranscript;
-            let intText = convertStringToASL(finalTranscript || interimTranscript);
-            symbolResultDiv.innerHTML = intText;
+            let intText = finalTranscript || interimTranscript;
+            textResultDiv.textContent = intText;
+            let intTextSymbol = convertStringToASL(finalTranscript || interimTranscript);
+            symbolResultDiv.innerHTML = intTextSymbol;
             let langInput = document.querySelector('#translatedLang').value;
-            let transText = '';
 
             let intTextEncoded = encodeURI(intText);
-            let api_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl="+langInput+"&dt=t&q="+intTextEncoded;
+            let api_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=" + langInput + "&dt=t&q=" + intTextEncoded;
             fetch(api_URL)
                 .then(res => res.json())
-                .then(data => transResultDiv.innerHTML = data[0][0][0]);
-            
+                .then(data => {
+                    let transText = data[0][0][0];
+                    transResultDiv.innerHTML = transText;
+                });
+
             totalTranscript += finalTranscript;
             totalSymbolScript += convertStringToASL(finalTranscript);
         };
@@ -86,6 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
             stopRecordingButton.disabled = true;
             totalTextResultDiv.textContent = totalTranscript;
             totalSymbolResultDiv.innerHTML = totalSymbolScript;
+
+            let intTextEncoded = encodeURI(totalTextResultDiv.textContent);
+            let langInput = document.querySelector('#translatedLang').value;
+            let api_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=" + langInput + "&dt=t&q=" + intTextEncoded;
+            fetch(api_URL)
+                .then(res => res.json())
+                .then(data => {
+                    let transTextTot = data[0][0][0];
+                    totalTransResultDiv.innerHTML = transTextTot;
+                });
         };
 
         recognition.onerror = (event) => {
