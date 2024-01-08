@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     headers: { 'X-Api-Key': '217kPjel2whDRtQFbM7FDw==sxNw7SJ3J8y0lD58'},
     contentType: 'application/json',
     success: function(result) {
-        document.querySelector('#visits').innerHTML = result;
+        document.querySelector('#visits').innerHTML = result.value;
         console.log(result);
     },
     error: function ajaxError(jqXHR) {
