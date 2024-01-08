@@ -18,6 +18,20 @@ function convertStringToASL(textString) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    $.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/counter?id=deafit&hit=true',
+    headers: { 'X-Api-Key': '217kPjel2whDRtQFbM7FDw==sxNw7SJ3J8y0lD58'},
+    contentType: 'application/json',
+    success: function(result) {
+        document.querySelector('#visits').innerHTML = result;
+        console.log(result);
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+});
+
     const startRecordingButton = document.querySelector('#startRecording');
     const stopRecordingButton = document.querySelector('#stopRecording');
 
